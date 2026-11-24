@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SPOT | سبوت</title>
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bk:#050505;--bk2:#0F0F10;--red:#E10600;--red2:#9B0000;--wh:#fff;--mute:#9A9A9F;--line:#2A2A2E;
+--slant:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--bk)}
+body{min-height:100vh;color:var(--wh);font-family:'Readex Pro',Tahoma,system-ui,sans-serif;background:var(--bk);
+ padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:300px;pointer-events:none;z-index:0;
+ background:linear-gradient(115deg,#C4000066 0 9%,transparent 9% 11%,#E1060040 11% 17%,transparent 17% 18.5%,#E1060026 18.5% 21%,transparent 21%);
+ -webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+body::after{content:"";position:fixed;inset:auto 0 0 0;height:240px;pointer-events:none;z-index:0;
+ background:radial-gradient(ellipse at 50% 120%,#E1060033,transparent 65%)}
+.wrap{position:relative;z-index:1;max-width:980px;margin:auto;padding:0 14px 48px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px;gap:10px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:46px;height:46px;border-radius:13px;box-shadow:0 0 0 1px #E1060088,0 6px 22px #E1060055}
+.brand b{display:block;font-size:24px;font-weight:700;line-height:1}
+.brand em{display:inline-block;font-style:normal;font-weight:700;font-size:12px;letter-spacing:.28em;color:var(--red);margin-top:5px;transform:skewX(-14deg)}
+.acts{display:flex;gap:8px}
+.btn{font:700 14px 'Readex Pro',Tahoma,sans-serif;color:#fff;border:0;cursor:pointer;padding:11px 20px;clip-path:var(--slant);
+ background:linear-gradient(135deg,#FF2A1F,var(--red) 45%,var(--red2));box-shadow:0 0 0 1px #fff2 inset}
+.btn.ghost{background:linear-gradient(135deg,#2a2a2e,#141416)}
+.btn:active{filter:brightness(1.2)}
+.btn:focus-visible,.item:focus-visible,input:focus-visible,.del:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.stage{position:relative;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;
+ border:1px solid #E1060099;box-shadow:0 0 0 4px #E106000f,0 18px 60px #E1060040,0 0 90px #E106001a}
+.stage video,.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--mute);padding:18px;font-size:14px;
+ background:radial-gradient(ellipse at 50% 30%,#E1060030,transparent 65%),linear-gradient(160deg,#120000,#000 60%)}
+.empty img{width:min(34%,150px);border-radius:24px;opacity:.95;box-shadow:0 0 50px #E1060066}
+.now{display:flex;align-items:center;gap:10px;padding:14px 4px;min-height:56px}
+.now b{font-size:18px;font-weight:700}.now small{color:var(--mute);font-size:13px}
+.tag{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#FF2A1F,var(--red2));color:#fff;font-weight:700;font-size:11px;padding:4px 14px;clip-path:var(--slant);flex:none}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.25}}
+h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;margin:12px 0 10px}
+h2::before{content:"";width:22px;height:12px;background:var(--red);clip-path:var(--slant)}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);transform:scaleX(-1)}
+.list{display:grid;gap:10px}
+.item{position:relative;display:flex;align-items:center;gap:12px;width:100%;overflow:hidden;cursor:pointer;color:inherit;font:inherit;text-align:start;
+ padding:15px 22px 15px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(100deg,#220000,#0F0F10 38%,#0A0A0B)}
+.item::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:9px;background:linear-gradient(var(--red),var(--red2));transform:skewX(-16deg);transform-origin:top}
+.item .t{flex:1;padding-inline-start:10px}.item .t b{display:block;font-weight:700;font-size:16px}.item .t span{font-size:12px;color:var(--mute)}
+.item[aria-current=true]{border-color:var(--red);box-shadow:0 0 28px #E1060050,inset 0 0 0 1px #E1060055}
+.item[aria-current=true]::before{width:14px}
+.del{background:none;border:0;color:var(--mute);font-size:22px;line-height:1;padding:6px 8px;cursor:pointer}
+.note{font-size:12px;color:var(--mute);margin-top:26px;line-height:1.9;padding:12px 14px;border-inline-start:3px solid var(--red);background:#ffffff08;border-radius:6px}
+dialog{background:linear-gradient(160deg,#1a0000,#0b0b0c 45%);color:#fff;border:1px solid #E1060088;border-radius:18px;padding:20px;width:min(440px,92vw);box-shadow:0 0 70px #E106004d}
+dialog::backdrop{background:#000c}
+dialog b.ttl{font-size:18px}
+label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px}
+input{width:100%;background:#000;color:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px;direction:ltr;text-align:start}
+input.rtl{direction:rtl}
+input:focus{border-color:var(--red)}
+.row{display:flex;gap:8px;margin-top:18px}
+#toast{position:fixed;inset:auto 0 calc(24px + env(safe-area-inset-bottom,0));margin:auto;width:max-content;max-width:90vw;z-index:9;background:#fff;color:#000;font-weight:500;padding:11px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;border-bottom:3px solid var(--red)}
+#toast.on{opacity:1}
+.addbar{display:flex;align-items:center;justify-content:center;gap:14px;margin:4px 0 8px}
+.addbar::before,.addbar::after{content:"";flex:1;height:10px;background:repeating-linear-gradient(115deg,var(--red) 0 6px,transparent 6px 14px);opacity:.75;-webkit-mask-image:linear-gradient(90deg,transparent,#000);mask-image:linear-gradient(90deg,transparent,#000)}
+.addbar::after{transform:scaleX(-1)}
+.btn.big{padding:15px 38px;font-size:16px;box-shadow:0 0 0 1px #fff3 inset,0 10px 34px #E1060066}
+header{position:relative}
+header::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(115deg,var(--red) 0 30%,transparent 30% 33%,#fff6 33% 36%,transparent 36%);opacity:.8}
+.stage::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:42%;height:5px;background:linear-gradient(115deg,var(--red),var(--red2) 80%,transparent 80%);pointer-events:none;z-index:2}
+.item.in{animation:slin .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slin{from{opacity:0;transform:translateX(-46px) skewX(10deg)}to{opacity:1;transform:none}}
+[hidden]{display:none!important}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,#fff5 50%,transparent 65%);transform:translateX(-130%);transition:transform .6s}
+.btn:hover::after,.btn:active::after{transform:translateX(130%)}
+header::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 40%,#ffffff30 50%,transparent 60%) no-repeat;background-size:260% 100%;animation:sweep 1.8s .3s 1 both}
+@keyframes sweep{from{background-position:130% 0}to{background-position:-30% 0}}
+.stage::before{content:"";position:absolute;top:0;inset-inline-end:0;width:34%;height:5px;background:linear-gradient(245deg,var(--red),var(--red2) 80%,transparent 80%);pointer-events:none;z-index:2}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:500 13px 'Readex Pro',Tahoma,sans-serif;color:#fff;background:#1b1b1e;border:0;padding:9px 22px;clip-path:var(--slant);cursor:pointer;transition:background .25s}
+.chip[aria-pressed=true]{background:linear-gradient(135deg,#FF2A1F,var(--red2))}
+.item{transition:transform .2s}.item:active{transform:translateX(-5px) skewX(-2deg)}
+#login{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;overflow:auto;background:radial-gradient(ellipse at 50% 0,#E1060044,transparent 60%),#000}
+#login::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,#C4000055 0 10%,transparent 10% 12%,#E1060033 12% 18%,transparent 18% 19.5%,#E106001f 19.5% 22%,transparent 22%)}
+.lcard{position:relative;width:min(400px,100%);text-align:center;background:linear-gradient(160deg,#1a0000,#0b0b0c 50%);border:1px solid #E1060088;border-radius:20px;padding:26px 20px;box-shadow:0 0 80px #E1060040;animation:slin .6s cubic-bezier(.2,.8,.2,1) both}
+.lcard img{width:84px;border-radius:20px;box-shadow:0 0 40px #E1060070;margin-bottom:8px}
+.lcard h1{font-size:22px}.lcard p{color:var(--mute);font-size:13px;margin-top:4px}
+.ltabs{display:flex;gap:8px;justify-content:center;margin:16px 0 2px}
+.lcard form{text-align:start}
+.lcard .btn{width:100%;margin-top:14px}
+.lcard .gbtn{background:#fff!important;color:#111!important}
+.lerr{color:#ff7a70;font-size:13px;min-height:20px;margin-top:10px}
+.link{background:none;border:0;color:var(--mute);font:inherit;font-size:13px;margin-top:10px;cursor:pointer;text-decoration:underline}
+@media(min-width:760px){.list{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.btn{padding:10px 14px;font-size:13px}.brand img{width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.item.in{animation:none}.tag::before{animation:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><img src="icon-192.png" alt=""><div><b>سبوت</b><em>SPOT</em></div></div>
+  <div class="acts">
+    <button class="btn ghost" id="install" hidden>تثبيت</button>
+    <button class="btn ghost" id="logout" hidden>خروج</button>
+  </div>
+</header>
+
+<div class="stage" id="stage"></div>
+<div class="now" id="now"></div>
+
+<div class="addbar"><button class="btn big" id="add">＋ إضافة مباراة</button></div>
+
+<h2>المباريات</h2>
+<div class="chips" id="chips"></div>
+<div class="list" id="list"></div>
+
+<p class="note">أضف روابط البث التي لديك حق مشاهدتها (HLS ‏.m3u8 / MP4 / رابط تضمين رسمي). سبوت مشغّل فقط ولا يوفّر قنوات أو بثوثاً. تُحفظ القائمة على جهازك.</p>
+</div>
+
+<dialog id="dlg">
+  <form method="dialog" id="form">
+    <b class="ttl">إضافة مباراة</b>
+    <label for="f-title">اسم المباراة</label>
+    <input id="f-title" class="rtl" required placeholder="الهلال × النصر">
+    <label for="f-league">البطولة (اختياري)</label>
+    <input id="f-league" class="rtl" placeholder="دوري روشن">
+    <label for="f-url">رابط البث</label>
+    <input id="f-url" type="url" required placeholder="https://…/stream.m3u8">
+    <label for="f-m3u">أو استورد قائمة M3U من ملف</label>
+    <input id="f-m3u" type="file" accept=".m3u,.m3u8,text/plain">
+    <div class="row">
+      <button class="btn" value="ok">حفظ</button>
+      <button class="btn ghost" value="cancel" formnovalidate>إلغاء</button>
+    </div>
+  </form>
+</dialog>
+<div id="login" hidden>
+  <div class="lcard">
+    <img src="icon-192.png" alt="SPOT">
+    <h1>سبوت SPOT</h1><p>سجّل دخولك لمشاهدة المباريات</p>
+    <div class="ltabs"><button class="chip" id="ltab-in" type="button" aria-pressed="true">دخول</button><button class="chip" id="ltab-up" type="button" aria-pressed="false">حساب جديد</button></div>
+    <form id="lform">
+      <div id="lname-w" style="display:none"><label for="lname">الاسم</label><input id="lname" class="rtl" autocomplete="name"></div>
+      <label for="lemail">البريد الإلكتروني</label><input id="lemail" type="email" required autocomplete="email">
+      <label for="lpass">كلمة المرور</label><input id="lpass" type="password" required minlength="6" autocomplete="current-password">
+      <div class="lerr" id="lerr" role="alert"></div>
+      <button class="btn" id="lgo">دخول</button>
+      <button class="btn gbtn" id="lgoogle" type="button">المتابعة بحساب Google</button>
+      <button class="link" id="lforgot" type="button">نسيت كلمة المرور؟</button>
+    </form>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.8/dist/hls.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const KEY='spot.items.v1';
+const DEMO=[{id:'demo',title:'بث تجريبي (Mux)',league:'اختبار المشغّل',url:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'}];
+const EMPTY='<div class="empty"><img src="icon-512.png" alt="SPOT"><span>اختر مباراة من القائمة لبدء المشاهدة</span></div>';
+let items=[],cur=null,hls=null,filter='all',cloud=[],fileItems=[];const seen=new Set();
+let local=[];try{local=JSON.parse(localStorage.getItem(KEY)||'[]')||[]}catch(e){}
+const FB=!!(window.firebase&&window.SPOT_FIREBASE&&!/^PASTE/.test(SPOT_FIREBASE.apiKey||'PASTE'));
+let isAdmin=false;
+const rebuild=()=>{const ids=new Set([...fileItems,...cloud].map(x=>x.id));items=[...fileItems,...cloud,...(FB?[]:local.filter(x=>!ids.has(x.id)))]};
+const merge=f=>{fileItems=f.map(x=>({...x,fixed:true}));rebuild()};
+merge(DEMO);
+const save=()=>{local=items.filter(x=>!x.fixed);try{localStorage.setItem(KEY,JSON.stringify(local))}catch(e){}};
+fetch('matches.json',{cache:'no-cache'}).then(r=>r.json()).then(a=>{if(Array.isArray(a)&&a.length){merge(a);render()}}).catch(()=>{});
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2800)};
+const toEmbed=u=>{const m=u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|live\/|embed\/)|youtu\.be\/)([\w-]{11})/);return m?'https://www.youtube.com/embed/'+m[1]+'?autoplay=1&playsinline=1&rel=0':u};
+const isVideo=u=>/\.(m3u8|mp4|webm|mpd)(\?|#|$)/i.test(u);
+
+function render(){
+  const l=$('#list');l.innerHTML='';
+  if(!items.length){l.innerHTML='<div class="note">لا توجد مباريات بعد. اضغط «إضافة مباراة».</div>';return}
+  renderChips();
+  const shown=items.filter(x=>filter==='all'||x.league===filter);
+  shown.forEach((it,i)=>{
+    const b=document.createElement('div');b.className='item'+(seen.has(it.id)?'':' in');b.style.animationDelay=(i*70)+'ms';b.tabIndex=0;b.setAttribute('role','button');
+    b.setAttribute('aria-current',cur===it.id);
+    b.innerHTML='<span class="tag">مباشر</span><div class="t"><b></b><span></span></div><button class="del" aria-label="حذف">×</button>';
+    b.querySelector('b').textContent=it.title;b.querySelector('.t span').textContent=it.league||'';
+    b.onclick=()=>play(it.id);
+    b.onkeydown=e=>{if(e.target===b&&(e.key==='Enter'||e.key===' ')){e.preventDefault();play(it.id)}};
+    if(it.fixed||(it.cloud&&!isAdmin))b.querySelector('.del').remove();else b.querySelector('.del').onclick=e=>{if(it.cloud){e.stopPropagation();db.collection('matches').doc(it.id).delete().catch(()=>toast('لا تملك صلاحية الحذف'));return}e.stopPropagation();items=items.filter(x=>x.id!==it.id);if(cur===it.id){stop();cur=null}save();render()};
+    l.appendChild(b);seen.add(it.id);
+  });
+  first=false;
+}
+function renderChips(){const c=$('#chips');const ls=[...new Set(items.map(x=>x.league).filter(Boolean))];if(filter!=='all'&&!ls.includes(filter))filter='all';c.style.display=ls.length>1?'flex':'none';c.innerHTML='';['all',...ls].forEach(l=>{const b=document.createElement('button');b.className='chip';b.textContent=l==='all'?'الكل':l;b.setAttribute('aria-pressed',filter===l);b.onclick=()=>{filter=l;render()};c.appendChild(b)})}
+function stop(){if(hls){hls.destroy();hls=null}$('#stage').innerHTML=EMPTY;$('#now').innerHTML=''}
+function play(id){
+  const it=items.find(x=>x.id===id);if(!it)return;
+  stop();cur=id;const st=$('#stage');st.innerHTML='';
+  if(isVideo(it.url)){
+    const v=document.createElement('video');v.controls=true;v.autoplay=true;v.playsInline=true;st.appendChild(v);
+    const fail=()=>toast('تعذّر تشغيل البث. تأكد من الرابط أو أن الخادم يسمح بالتشغيل (CORS).');
+    if(/\.m3u8/i.test(it.url)&&window.Hls&&Hls.isSupported()){
+      hls=new Hls({lowLatencyMode:true});hls.loadSource(it.url);hls.attachMedia(v);
+      hls.on(Hls.Events.ERROR,(_,d)=>{if(d.fatal)fail()});
+    }else{v.src=it.url;v.onerror=fail}
+    v.play().catch(()=>{});
+  }else{
+    const f=document.createElement('iframe');f.src=toEmbed(it.url);f.allow='autoplay; fullscreen; picture-in-picture; encrypted-media';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';st.appendChild(f);
+  }
+  $('#now').innerHTML='<span class="tag">مباشر</span><div><b></b><br><small></small></div>';
+  $('#now b').textContent=it.title;$('#now small').textContent=it.league||'';
+  render();st.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function parseM3U(t){
+  const out=[];let name='';
+  t.split(/\r?\n/).forEach(l=>{l=l.trim();
+    if(l.startsWith('#EXTINF')){name=(l.split(',').slice(1).join(',')||'').trim()}
+    else if(l&&!l.startsWith('#')){out.push({id:'i'+Date.now()+out.length,title:name||l,league:'',url:l});name=''}});
+  return out;
+}
+$('#add').onclick=()=>$('#dlg').showModal();
+$('#form').addEventListener('submit',async e=>{
+  if(e.submitter?.value!=='ok')return;
+  const file=$('#f-m3u').files[0];
+  const list=file?parseM3U(await file.text()):[{title:$('#f-title').value.trim(),league:$('#f-league').value.trim(),url:$('#f-url').value.trim()}];
+  if(FB&&isAdmin){try{const b=db.batch();list.forEach(x=>b.set(db.collection('matches').doc(),{title:x.title,league:x.league||'',url:x.url,createdAt:firebase.firestore.FieldValue.serverTimestamp()}));await b.commit();toast('تمت الإضافة للجميع ✓')}catch(_){toast('تعذّرت الإضافة: تحقق من صلاحيات الأدمن')}}
+  else{list.forEach((x,i)=>items.push({...x,id:'i'+Date.now()+i}));save();render();if(file)toast('تمت إضافة '+list.length+' عنصر')}
+  e.target.reset();$('#f-title').required=$('#f-url').required=true;
+});
+$('#f-m3u').onchange=e=>{const has=!!e.target.files[0];$('#f-title').required=!has;$('#f-url').required=!has};
+let auth,db;
+const updateAdminUI=()=>{$('.addbar').style.display=(FB&&!isAdmin)?'none':''};
+if(FB){
+  firebase.initializeApp(SPOT_FIREBASE);auth=firebase.auth();db=firebase.firestore();
+  const ov=$('#login');ov.hidden=false;let mode='in',unsub=null;
+  const ERR={'auth/invalid-credential':'البريد أو كلمة المرور غير صحيحة','auth/invalid-email':'البريد الإلكتروني غير صالح','auth/email-already-in-use':'هذا البريد مسجّل مسبقاً','auth/weak-password':'كلمة المرور ضعيفة (6 أحرف على الأقل)','auth/too-many-requests':'محاولات كثيرة، حاول لاحقاً','auth/network-request-failed':'تحقق من الاتصال بالإنترنت','auth/popup-closed-by-user':'أُغلقت نافذة Google','auth/unauthorized-domain':'أضف نطاق موقعك في Authorized domains'};
+  const lerr=x=>{$('#lerr').textContent=ERR[x.code]||'حدث خطأ، حاول مرة أخرى'};
+  const setMode=m=>{mode=m;$('#lname-w').style.display=m==='up'?'block':'none';$('#lgo').textContent=m==='up'?'إنشاء الحساب':'دخول';$('#ltab-in').setAttribute('aria-pressed',m==='in');$('#ltab-up').setAttribute('aria-pressed',m==='up');$('#lerr').textContent=''};
+  $('#ltab-in').onclick=()=>setMode('in');$('#ltab-up').onclick=()=>setMode('up');
+  $('#lform').onsubmit=async e=>{e.preventDefault();const em=$('#lemail').value.trim(),pw=$('#lpass').value;$('#lerr').textContent='';
+    try{if(mode==='up'){const c=await auth.createUserWithEmailAndPassword(em,pw);const nm=$('#lname').value.trim();if(nm)await c.user.updateProfile({displayName:nm});try{await db.collection('users').doc(c.user.uid).set({name:nm,email:em,createdAt:firebase.firestore.FieldValue.serverTimestamp()})}catch(_){}}else await auth.signInWithEmailAndPassword(em,pw)}catch(x){lerr(x)}};
+  $('#lgoogle').onclick=async()=>{const g=new firebase.auth.GoogleAuthProvider();try{await auth.signInWithPopup(g)}catch(x){if(x.code==='auth/popup-blocked'||x.code==='auth/operation-not-supported-in-this-environment')auth.signInWithRedirect(g);else lerr(x)}};
+  $('#lforgot').onclick=async()=>{const em=$('#lemail').value.trim();if(!em){$('#lerr').textContent='اكتب بريدك أولاً';return}try{await auth.sendPasswordResetEmail(em);toast('أرسلنا رابط إعادة التعيين لبريدك')}catch(x){lerr(x)}};
+  $('#logout').onclick=()=>auth.signOut();
+  auth.onAuthStateChanged(async u=>{
+    if(unsub){unsub();unsub=null}
+    if(!u){ov.hidden=false;$('#logout').hidden=true;isAdmin=false;cloud=[];stop();cur=null;rebuild();updateAdminUI();render();return}
+    ov.hidden=true;$('#logout').hidden=false;
+    try{isAdmin=(await db.collection('admins').doc(u.uid).get()).exists}catch(_){isAdmin=false}
+    updateAdminUI();
+    unsub=db.collection('matches').orderBy('createdAt','desc').onSnapshot(sn=>{cloud=sn.docs.map(d=>({...d.data(),id:d.id,cloud:true}));rebuild();render()},()=>toast('تعذّر تحميل المباريات، راجع قواعد Firestore'));
+  });
+}
+updateAdminUI();
+let dip=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;$('#install').hidden=false});
+$('#install').onclick=async()=>{if(!dip)return;dip.prompt();await dip.userChoice;dip=null;$('#install').hidden=true};
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+$('#stage').innerHTML=EMPTY;render();
+</script>
+</body>
+</html>
