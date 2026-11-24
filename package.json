@@ -1,0 +1,1 @@
+{"name":"spot","private":true,"version":"1.0.0","scripts":{"dev":"python3 -m http.server ${PORT:-3000} --bind 0.0.0.0","build":"mkdir -p dist && cp -r index.html firebase-config.js firestore.rules manifest.json manus-routes.json matches.json sw.js icon-*.png apple-touch-icon.png dist/"},"dependencies":{}}
